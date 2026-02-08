@@ -1,0 +1,84 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { blogPosts, orderedBlogPosts, type BlogPost } from "../../data/blogPosts";
+
+export const getStaticPaths = async () => {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+};
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+
+const formatDate = (iso: string) =>
+  new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  }).format(new Date(iso));
+
+const related = orderedBlogPosts.filter((item) => item.slug !== post.slug).slice(0, 2);
+---
+
+<MainLayout title={`${post.title} — Bluesky Journal`} description={post.excerpt}>
+
+  <!-- Article header -->
+  <section class="section">
+    <div class="container fade-in">
+      <div class="surface soft pad-lg">
+        <span class="kicker">{post.category}</span>
+        <h1 class="title" style="margin-top: 0.8rem;">{post.title}</h1>
+        <div class="stats">
+          <span class="stat">{formatDate(post.date)}</span>
+          <span class="stat">{post.readTime}</span>
+        </div>
+        <p class="copy" style="font-size: 1.05rem; font-weight: 500;">{post.excerpt}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section class="section tight">
+    <div class="container reveal">
+      <div class="surface pad" style="max-width: 740px; margin-inline: auto;">
+        <div class="list">
+          {post.body.map((paragraph) => <p class="list-item" style="font-size: 0.92rem; line-height: 1.7;">{paragraph}</p>)}
+        </div>
+        <div class="actions" style="margin-top: 2rem;">
+          <a class="btn-ghost" href="/blog">Back to journal</a>
+          <a class="btn" href="/contact">Discuss your project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related posts -->
+  <section class="section tight">
+    <div class="container reveal">
+      <div class="surface pad">
+        <span class="kicker">Keep reading</span>
+        <h2 class="title" style="font-size: clamp(1.3rem, 2.4vw, 1.8rem); margin-top: 0.5rem;">Related articles</h2>
+        <div class="grid two">
+          {
+            related.map((item) => (
+              <article class="card">
+                <p class="tag">{item.category}</p>
+                <h2>{item.title}</h2>
+                <p>{item.excerpt}</p>
+                <div class="actions" style="margin-top: 0.8rem;">
+                  <a class="btn-ghost" href={`/blog/${item.slug}/`}>Read article</a>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+</MainLayout>

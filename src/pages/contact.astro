@@ -1,0 +1,115 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Contact — Bluesky Software" description="Start your website and mobile app project with Bluesky. Book a discovery call and let's build something exceptional.">
+
+  <!-- Hero -->
+  <section class="section">
+    <div class="container fade-in">
+      <div class="text-center" style="max-width: 580px; margin-inline: auto;">
+        <span class="kicker">Get in touch</span>
+        <h1 class="title" style="margin-top: 0.8rem;">Let's talk about<br/>your next platform.</h1>
+        <p class="copy centered">
+          Tell us about your organisation and where you want to go
+          — we'll map the right package and modules. No pressure, no jargon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section flush-top">
+    <div class="container">
+      <div class="grid two contact-grid">
+
+        <!-- Contact info -->
+        <article class="surface soft pad fade-in">
+          <h2 style="color: #0c4a6e; font-size: 1.15rem;">We'd love to hear from you</h2>
+          <p class="copy">
+            Whether you're starting from scratch or upgrading an existing site,
+            our team is here to help. Drop us a line or fill out the form
+            and we'll get back to you promptly.
+          </p>
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>Email</strong><br/>
+              hello@blueskysoftware.com
+            </div>
+            <div class="contact-item">
+              <strong>Discovery calls</strong><br/>
+              Monday — Friday, 9:00 AM — 6:00 PM
+            </div>
+            <div class="contact-item">
+              <strong>What we deliver</strong><br/>
+              Websites, mobile apps, forms, email, events, products, social publishing
+            </div>
+          </div>
+          <div class="stats" style="margin-top: 1.5rem;">
+            <span class="stat">Quick response</span>
+            <span class="stat">No obligation</span>
+            <span class="stat">Friendly team</span>
+          </div>
+        </article>
+
+        <!-- Contact form -->
+        <form class="surface pad fade-in-late" method="post" action="#">
+          <div class="form-grid two">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@organisation.com" required />
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 0.8rem;">
+            <label for="org">Organisation</label>
+            <input id="org" name="org" type="text" placeholder="Business, club, church, school..." required />
+          </div>
+
+          <div class="field" style="margin-top: 0.8rem;">
+            <label for="package">What are you looking for?</label>
+            <select id="package" name="package">
+              <option>Full website + mobile app</option>
+              <option>Website with forms & email</option>
+              <option>Events & calendar setup</option>
+              <option>Social connector integration</option>
+              <option>Custom enterprise solution</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </div>
+
+          <div class="field" style="margin-top: 0.8rem;">
+            <label for="goals">Tell us about your project</label>
+            <textarea id="goals" name="goals" placeholder="What should your platform achieve? Any specific features or goals?" required></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Send project brief</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section tight">
+    <div class="container reveal">
+      <div class="cta-banner">
+        <h2>Not quite ready? That's perfectly fine.</h2>
+        <p>
+          Browse our services, read the journal, or just bookmark this page.
+          We'll be here when you're ready to start.
+        </p>
+        <div class="actions">
+          <a class="btn-white" href="/services">Explore services</a>
+          <a class="btn-ghost" href="/blog" style="color: #fff; border-color: rgba(255,255,255,0.35);">Read the journal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</MainLayout>
